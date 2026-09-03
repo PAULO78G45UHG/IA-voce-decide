@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="AI Cosmic Mission — uma missão interativa para explorar os fundamentos da Inteligência Artificial.">
+
+    <title>AI Cosmic Mission</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         FUNDO ESPACIAL
+    ====================================================== -->
+
+    <div id="stars"></div>
+    <div id="particles"></div>
+
+    <div class="nebula nebula-one"></div>
+    <div class="nebula nebula-two"></div>
+
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
+
+    <section id="intro" class="screen active">
+
+        <div class="intro-grid"></div>
+
+        <div class="planet planet-large"></div>
+        <div class="planet planet-small"></div>
+
+        <div class="intro-content">
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                SISTEMA ONLINE
+            </div>
+
+            <p class="eyebrow">TRANSMISSÃO // 2087</p>
+
+            <h1>
+                <span>AI</span>
+                COSMIC
+                <strong>MISSION</strong>
+            </h1>
+
+            <div class="line"></div>
+
+            <p class="intro-description">
+                A inteligência artificial mudou o futuro.
+                Agora você precisa descobrir até onde ela pode chegar.
+            </p>
+
+            <div class="terminal">
+                <span class="terminal-symbol">&gt;</span>
+                <span id="terminalText"></span>
+                <span class="cursor">_</span>
+            </div>
+
+            <button id="startButton" class="primary-button">
+                <span>INICIAR EXPEDIÇÃO</span>
+                <span class="button-arrow">→</span>
+            </button>
+
+            <div class="intro-info">
+                <span>MISSION ID: AIC-2087</span>
+                <span>•</span>
+                <span>CLASS: EXPLORER</span>
+            </div>
+
+        </div>
+
+        <div class="scroll-indicator">
+            <span>PREPARE-SE</span>
+            <div></div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BRIEFING
+    ====================================================== -->
+
+    <section id="briefing" class="screen">
+
+        <div class="briefing-container">
+
+            <div class="section-label">
+                <span>01</span>
+                BRIEFING DA MISSÃO
+            </div>
+
+            <h2>
+                VOCÊ FOI <span>SELECIONADO.</span>
+            </h2>
+
+            <p class="briefing-text">
+                Uma inteligência artificial experimental detectou uma
+                anomalia desconhecida nos limites do espaço digital.
+                Para investigá-la, você precisará provar que entende
+                os fundamentos da IA.
+            </p>
+
+            <div class="mission-cards">
+
+                <div class="mission-card">
+                    <div class="card-number">01</div>
+                    <div class="card-icon">◈</div>
+                    <h3>SOBREVIVA</h3>
+                    <p>
+                        Atravesse o campo de asteroides
+                        e mantenha sua nave intacta.
+                    </p>
+                </div>
+
+                <div class="mission-card">
+                    <div class="card-number">02</div>
+                    <div class="card-icon">◇</div>
+                    <h3>APRENDA</h3>
+                    <p>
+                        Resolva os desafios relacionados
+                        à Inteligência Artificial.
+                    </p>
+                </div>
+
+                <div class="mission-card">
+                    <div class="card-number">03</div>
+                    <div class="card-icon">✦</div>
+                    <h3>DESCUBRA</h3>
+                    <p>
+                        Alcance o núcleo da missão e
+                        desbloqueie seu rank.
+                    </p>
+                </div>
+
+            </div>
+
+            <button id="launchButton" class="primary-button">
+                LANÇAR NAVE →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GAME
+    ====================================================== -->
+
+    <section id="game" class="screen">
+
+        <!-- HUD -->
+
+        <header class="hud">
+
+            <div class="hud-brand">
+                <span class="brand-symbol">✦</span>
+                AI // COSMIC
+            </div>
+
+            <div class="hud-center">
+                <span>MISSÃO</span>
+                <strong id="missionNumber">01</strong>
+                <span>/ 08</span>
+            </div>
+
+            <div class="hud-status">
+                <span class="status-dot"></span>
+                ONLINE
+            </div>
+
+        </header>
+
+
+        <div class="game-layout">
+
+            <!-- PAINEL ESQUERDO -->
+
+            <aside class="side-panel">
+
+                <div class="panel-block">
+                    <span class="panel-label">PILOTO</span>
+                    <strong>EXPLORER-01</strong>
+                </div>
+
+                <div class="panel-block">
+                    <span class="panel-label">XP</span>
+                    <strong id="xpValue">0000</strong>
+                </div>
+
+                <div class="panel-block">
+                    <span class="panel-label">SCORE</span>
+                    <strong id="scoreValue">0000</strong>
+                </div>
+
+                <div class="energy-panel">
+
+                    <div class="energy-title">
+                        <span>ENERGIA</span>
+                        <strong id="energyText">100%</strong>
+                    </div>
+
+                    <div class="energy-bar">
+                        <div id="energyFill"></div>
+                    </div>
+
+                </div>
+
+                <div class="coordinates">
+                    <span>COORDENADAS</span>
+                    <strong id="coordinates">X: 084.12<br>Y: 291.73</strong>
+                </div>
+
+            </aside>
+
+
+            <!-- ÁREA CENTRAL -->
+
+            <main class="game-main">
+
+                <div class="mission-header">
+
+                    <div>
+                        <span class="mission-tag">SIMULAÇÃO // NAVEGAÇÃO</span>
+
+                        <h2>
+                            CAMPO DE
+                            <span>ASTEROIDES</span>
+                        </h2>
+                    </div>
+
+                    <div class="timer">
+                        <span>TEMPO</span>
+                        <strong id="gameTimer">30</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- MINI GAME -->
+
+                <div id="gameArea" class="game-area">
+
+                    <div class="game-grid"></div>
+
+                    <div class="warning warning-one">
+                        ⚠ OBSTÁCULO DETECTADO
+                    </div>
+
+                    <div class="warning warning-two">
+                        SYSTEM / AVOID
+                    </div>
+
+                    <div id="ship" class="ship">
+
+                        <div class="ship-glow"></div>
+
+                        <div class="ship-body">
+                            <div class="ship-window"></div>
+                            <div class="ship-wing left"></div>
+                            <div class="ship-wing right"></div>
+                        </div>
+
+                        <div class="ship-engine"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="game-controls">
+                    <span>←</span>
+                    <span>USE A / D OU AS SETAS PARA MOVER</span>
+                    <span>→</span>
+                </div>
+
+
+                <div class="game-message" id="gameMessage">
+                    CAMPO DE ASTEROIDES INICIADO
+                </div>
+
+            </main>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         QUIZ
+    ====================================================== -->
+
+    <section id="quiz" class="screen">
+
+        <div class="quiz-container">
+
+            <div class="quiz-top">
+
+                <div>
+                    <span class="section-label">
+                        <span id="questionIndex">01</span>
+                        / 08
+                    </span>
+
+                    <h2>
+                        TESTE SEUS
+                        <span>CONHECIMENTOS.</span>
+                    </h2>
+                </div>
+
+                <div class="quiz-score">
+                    <span>SCORE</span>
+                    <strong id="quizScore">0000</strong>
+                </div>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div class="progress-info">
+                    <span>PROGRESSO DA MISSÃO</span>
+                    <strong id="progressText">12%</strong>
+                </div>
+
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+
+            </div>
+
+
+            <article class="question-card">
+
+                <div class="question-number">
+                    QUESTÃO <span id="questionNumber">01</span>
+                </div>
+
+                <h3 id="questionText">
+                    Carregando pergunta...
+                </h3>
+
+                <div id="answers" class="answers"></div>
+
+                <div id="answerFeedback" class="answer-feedback"></div>
+
+                <button id="nextButton" class="primary-button next-button" disabled>
+                    PRÓXIMA QUESTÃO →
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULTADO
+    ====================================================== -->
+
+    <section id="result" class="screen">
+
+        <div class="result-container">
+
+            <div class="result-symbol">
+                ✦
+            </div>
+
+            <p class="eyebrow">TRANSMISSÃO FINAL RECEBIDA</p>
+
+            <h2>
+                MISSÃO
+                <span>CONCLUÍDA.</span>
+            </h2>
+
+            <p id="resultMessage" class="result-description">
+                Você completou a missão.
+            </p>
+
+
+            <div class="result-stats">
+
+                <div>
+                    <span>SCORE</span>
+                    <strong id="finalScore">0000</strong>
+                </div>
+
+                <div>
+                    <span>ACERTOS</span>
+                    <strong id="finalCorrect">0/8</strong>
+                </div>
+
+                <div>
+                    <span>XP</span>
+                    <strong id="finalXP">0000</strong>
+                </div>
+
+            </div>
+
+
+            <div class="rank-card">
+
+                <span>CLASSIFICAÇÃO</span>
+
+                <strong id="finalRank">
+                    COSMIC EXPLORER
+                </strong>
+
+                <div class="rank-line"></div>
+
+                <p id="rankDescription">
+                    Seu conhecimento abriu caminho para novas descobertas.
+                </p>
+
+            </div>
+
+
+            <button id="restartButton" class="primary-button">
+                ↻ NOVA EXPEDIÇÃO
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OVERLAY DE DANO
+    ====================================================== -->
+
+    <div id="damageOverlay"></div>
+
+
+    <!-- =====================================================
+         MODAL DE INFORMAÇÃO
+    ====================================================== -->
+
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
